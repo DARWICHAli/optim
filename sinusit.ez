@@ -13,6 +13,8 @@ __________________________________________________________*/
 
 float fEch[NB_ECH][2]; // pour x et y
 float fSin[NB_SIN*3];
+float probcrois[NB_SIN*3];
+
 \end
 
 \User functions:
@@ -65,6 +67,10 @@ GenomeClass {
 \end
 
 \GenomeClass::initialiser : // "initializer" is also accepted
+//on init le 8 prob de locus ici
+for (size_t i = 0; i < NB_SIN*3; i++) {
+    probcrois[i] = random(0.0,1.0);
+}
 for(int s=0; s<NB_SIN; s++ ){
 	Genome.fSin[s*3+0] = random(0.0,PL_AMP);
 	Genome.fSin[s*3+1] = random(0.0,PL_FR);
@@ -73,12 +79,24 @@ for(int s=0; s<NB_SIN; s++ ){
 \end
 
 \GenomeClass::crossover : // child est initialisé à parent1
-  int nLocus=random(1,NB_SIN-1); // valeur entre 1 et NB_SIN -2
-  for (int i=nLocus;i<NB_SIN;i++){
-     child.fSin[i*3+0]=parent2.fSin[i*3+0];
-     child.fSin[i*3+1]=parent2.fSin[i*3+1];
-     child.fSin[i*3+2]=parent2.fSin[i*3+2];
-  }
+// nombre de locus  = 8
+// on
+  //int nLocus=random(1,NB_SIN-1); // valeur entre 1 et NB_SIN -2
+    int nLocus= 2; // valeur entre 1 et NB_SIN -2
+    for (int i=nLocus;i<NB_SIN;i++){
+    // croisement tombant au milieu d’un sinus
+    // if (tossCoin(probcrois[i*3+0])) child.fSin[i*3+0]=parent2.fSin[i*3+0];
+    // if (tossCoin(probcrois[i*3+1])) child.fSin[i*3+1]=parent2.fSin[i*3+1];
+    // if (tossCoin(probcrois[i*3+2])) child.fSin[i*3+2]=parent2.fSin[i*3+2];
+    //deux sinus
+        if(tossCoin(probcrois[i*3]))
+        {
+            child.fSin[i*3+0]=parent2.fSin[i*3+0];
+            child.fSin[i*3+1]=parent2.fSin[i*3+1];
+            child.fSin[i*3+2]=parent2.fSin[i*3+2];
+        }
+    }
+
 \end
 
 \GenomeClass::mutator :
@@ -126,7 +144,7 @@ for(int s=0; s<NB_SIN; s++ ){
   Generate csv stats file:false
   Generate gnuplot script:false
   Generate R script:false
-  Plot stats:false				//Default: 0
+  Plot stats:true				//Default: 0
 
   Remote island model: false
   IP file: ip.txt 			//File containing all the remote island's IP

@@ -10,9 +10,28 @@ toc::[]
 
 == introduction
 
-NOTE: this is a test
+*****
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+*****
 
 == présentation du problème
+
+* **L’influence (ou non) de points de croisement tombant au milieu d’un sinus ou entre deux sinus**
+
+NOTE: Pas du vrai influence je pense
+
+
+* **La comparaison entre les runs précédents et des runs où les valeurs x0..x7 évoluent en même temps que le génome (par mutation et croisement)**
+
+IMPORTANT: voir *.log
+
 == Resultat
+
+NOTE: ajout photos!
 == amélioration
+
+
 == Conclusion
+
+
+NOTE: répondre au deux questions
