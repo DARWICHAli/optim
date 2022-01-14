@@ -1,0 +1,7 @@
+*.log
+*.dat
+*.mak
+*.plot
+*.prm
+*.cpp
+*.hpp

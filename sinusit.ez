@@ -1,0 +1,138 @@
+/*_________________________________________________________
+
+sinusit.ez  // décomposer un signal en somme de sinus
+__________________________________________________________*/
+
+\User declarations :
+#define NB_SIN 3
+#define PL_AMP 100.0 // plage d'amplitude
+#define PL_FR 10.0   // plage de fréquence
+#define PL_PH 6.28   // plage de phase
+#define PL_X 100.0 // valeurs de x
+#define NB_ECH 1000 // nb d'échantillons
+
+float fEch[NB_ECH][2]; // pour x et y
+float fSin[NB_SIN*3];
+\end
+
+\User functions:
+\end
+
+\User CUDA:
+\end
+
+\Before everything else function: // créer nos échantillons
+for (int s=0;s<NB_SIN;s++){ // Création des sinus
+  fSin[s*3+0]=random(0.0,PL_AMP);
+  fSin[s*3+1]=random(0.0,PL_FR);
+  fSin[s*3+2]=random(0.0,PL_PH);
+}
+fSin[0*3+0]=29.1; fSin[0*3+1]=7.26; fSin[0*3+2]=2.62; // premier sinus
+fSin[1*3+0]=69.4; fSin[1*3+1]=4.47; fSin[1*3+2]=6.21; // deuxième sinus
+fSin[2*3+0]=26.4; fSin[2*3+1]=3.57; fSin[2*3+2]=2.83; // troisième sinus
+
+for (int n=0;n<NB_ECH;n++){ // Création des échantillons
+  float fSomme=0.0, x=fEch[n][0]=random(0.0, PL_X);
+  for (int s=0;s<NB_SIN;s++) fSomme+=fSin[s*3+0]*sin(x*fSin[s*3+1]+fSin[s*3+2]);
+  fEch[n][1]=fSomme;
+}
+\end
+
+\After everything else function: // bBest est un pointeur sur le meilleur individu trouvé
+printf("Fonction recherchée : y=");
+for (int s=0;s<NB_SIN;s++) printf("%f*sin(x*%f+%f)+",fSin[s*3+0], fSin[s*3+1], fSin[s*3+2]);
+printf("\n\nFonction trouvée : y=");
+for (int s=0;s<NB_SIN;s++) printf("%f*sin(x*%f+%f)+",bBest->fSin[s*3+0], bBest->fSin[s*3+1], bBest->fSin[s*3+2]);
+printf("\n\n");
+\end
+
+\At the beginning of each generation function:
+\end
+
+\At the end of each generation function:
+\end
+
+\At each generation before reduce function:
+\end
+
+\User classes :
+GenomeClass {
+  float fSin[NB_SIN*3]; // fSin[x*3+0] = amplitude, fSin[x*3+1] = frequence fSin[x*3+2] = phase
+}
+\end
+
+\GenomeClass::display:
+\end
+
+\GenomeClass::initialiser : // "initializer" is also accepted
+for(int s=0; s<NB_SIN; s++ ){
+	Genome.fSin[s*3+0] = random(0.0,PL_AMP);
+	Genome.fSin[s*3+1] = random(0.0,PL_FR);
+	Genome.fSin[s*3+2] = random(0.0,PL_PH);
+}
+\end
+
+\GenomeClass::crossover : // child est initialisé à parent1
+  int nLocus=random(1,NB_SIN-1); // valeur entre 1 et NB_SIN -2
+  for (int i=nLocus;i<NB_SIN;i++){
+     child.fSin[i*3+0]=parent2.fSin[i*3+0];
+     child.fSin[i*3+1]=parent2.fSin[i*3+1];
+     child.fSin[i*3+2]=parent2.fSin[i*3+2];
+  }
+\end
+
+\GenomeClass::mutator :
+  float fProbMutParGene = 1.0/(float)(NB_SIN*3);
+  for (int s=0;s<NB_SIN;s++){
+    if (tossCoin(fProbMutParGene)) Genome.fSin[s*3+0]+=random(-PL_AMP, PL_AMP)/10.0;
+    if (tossCoin(fProbMutParGene)) Genome.fSin[s*3+1]+=random(-PL_FR, PL_FR)/10.0;
+    if (tossCoin(fProbMutParGene)) Genome.fSin[s*3+2]+=random(-PL_PH, PL_PH)/10.0;
+  }
+
+\end
+
+\GenomeClass::evaluator : // Returns the score
+  float fIntegrale=0;
+  for (int n=0;n<NB_ECH;n++) {
+    float x=fEch[n][0], y=fEch[n][1], fSomme=0.0;
+    for (int s=0;s<NB_SIN;s++)
+      fSomme += Genome.fSin[s*3+0]*sin(x*Genome.fSin[s*3+1]+Genome.fSin[s*3+2]);
+    fIntegrale += fabs(fSomme-y);
+  }
+  return fIntegrale;
+\end
+
+\User Makefile options:
+\end
+
+\Default run parameters :        // Please let the parameters appear in this order
+  Number of generations : 100   	// NB_GEN
+  Time limit: 0 			// In seconds, 0 to deactivate
+  Population size : 10000			//POP_SIZE
+  Offspring size : 100% // 40%
+  Mutation probability : 1       // MUT_PROB
+  Crossover probability : 1      // XOVER_PROB
+  Evaluator goal : minimise      // Maximise
+  Selection operator: Tournament 7
+  Surviving parents: 1//percentage or absolute
+  Surviving offspring: 100%
+  Reduce parents operator: Tournament 2
+  Reduce offspring operator: Tournament 1
+  Final reduce operator: Tournament 2
+
+  Elitism: Strong			//Weak or Strong
+  Elite: 1
+  Print stats: true				//Default: 1
+  Generate csv stats file:false
+  Generate gnuplot script:false
+  Generate R script:false
+  Plot stats:false				//Default: 0
+
+  Remote island model: false
+  IP file: ip.txt 			//File containing all the remote island's IP
+  Server port : 2929
+  Migration probability: 0.3
+
+  Save population: false
+  Start from file:false
+\end
