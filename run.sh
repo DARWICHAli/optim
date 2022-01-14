@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 # compile et exec
-easena sinusit.ez && make && ./sinusit
+easena $1 && make && ./sinusit
 mv *.log logs/
