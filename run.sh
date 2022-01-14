@@ -1,5 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # compile et exec
-easena $1 && make && ./sinusit
-mv *.log logs/
+if [ $# = 0 ] || [[ $1 != *".ez" ]]; then
+    echo "Usage: ./run <file.ez> "
+else
+    easena $1 && make && ./sinusit
+    mv *.log logs/
+fi
+exit 0

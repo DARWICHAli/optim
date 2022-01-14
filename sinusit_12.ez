@@ -84,10 +84,6 @@ for(int s=0; s<NB_SIN; s++ ){
   //int nLocus=random(1,NB_SIN-1); // valeur entre 1 et NB_SIN -2
     int nLocus= 2; // valeur entre 1 et NB_SIN -2
     for (int i=nLocus;i<NB_SIN;i++){
-    // croisement tombant au milieu d’un sinus
-    // if (tossCoin(probcrois[i*3+0])) child.fSin[i*3+0]=parent2.fSin[i*3+0];
-    // if (tossCoin(probcrois[i*3+1])) child.fSin[i*3+1]=parent2.fSin[i*3+1];
-    // if (tossCoin(probcrois[i*3+2])) child.fSin[i*3+2]=parent2.fSin[i*3+2];
     //deux sinus
         if(tossCoin(probcrois[i*3]))
         {
