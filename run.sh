@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-# compile est exec
+# compile et exec
 easena sinusit.ez && make && ./sinusit
