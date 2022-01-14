@@ -5,3 +5,5 @@
 *.prm
 *.cpp
 *.hpp
+*.o
+sinusit
