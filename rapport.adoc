@@ -27,8 +27,31 @@ IMPORTANT: voir *.log
 
 == Resultat
 
-NOTE: ajout photos!
-== amélioration
+=== plot points de croisement tombant au milieu d’un sinus
+
+image::plots/sin11.png[]
+image::plots/sin11new.png[]
+
+=== plot points de croisement entre deux sinus
+
+image::plots/sin12.png[]
+image::plots/sin12new.png[]
+
+
+=== voir différence
+
+image::plots/sin11et12.png[]
+image::plots/sin11_&&_12.png[]
+
+rouge est moins bon mais pas trop !
+pas consitant!
+
+== question b
+
+image::plots/allnew.png[]
+
+le vert est quand on révalue la prob des locus a chaque gen
+
 
 
 == Conclusion

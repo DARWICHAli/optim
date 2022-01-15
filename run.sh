@@ -12,6 +12,7 @@ else
     make
     ./$foo
     echo "Done !"
+    make easeaclean
     mv *.log logs/
 fi
 exit 0

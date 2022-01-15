@@ -1,1 +1,0 @@
-sinusit_21.mak
