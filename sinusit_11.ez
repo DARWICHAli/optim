@@ -64,6 +64,7 @@ printf("\n\n");
 \User classes :
 GenomeClass {
   float fSin[NB_SIN*3]; // fSin[x*3+0] = amplitude, fSin[x*3+1] = frequence fSin[x*3+2] = phase
+  float probcrois[NB_SIN*3];
 }
 \end
 
