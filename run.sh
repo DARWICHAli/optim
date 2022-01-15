@@ -3,6 +3,12 @@
 suffix=".ez"
 foo=${1%"$suffix"}
 # compile et exec
+
+if [[ $1 == *"pdf" ]]; then
+    asciidoctor-pdf *.adoc
+    exit 0
+fi
+
 if [ $# = 0 ] || [[ $1 != *".ez" ]]; then
     echo "Usage: ./run <file.ez> "
 else
