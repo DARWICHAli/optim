@@ -6,7 +6,7 @@ Population size: 10000
 CPU Threads number: 1
 Evaluation goal: 1
 ____________________________________________________
-Special options: 
+Special options:
 Offspring population size: 10000
 Mutation probability: 1
 Crossover probability: 1
@@ -23,20 +23,19 @@ Replacement pressure: 2
 Elitism: 1
 Elite size: 1
 ____________________________________________________
-Remote island model: 
+Remote island model:
 Remote island model: 0
 Ip file: ip.txt
 Migration probability: 0.3
 Server port: 2929
 Reevaluate immigrants: 0
 _____________________________________________________
-Result: 
+Result:
 Best fitness: 990.007
-Best individual: 
+Best individual:
 26.3356 3.57 2.83257 69.3822 4.47084 6.1677 29.1214 7.25923 2.65565 990.007
 
 
 Elapsed time: 46.5009 s
 _____________________________________________________
-User's messages: 
-
+User's messages:

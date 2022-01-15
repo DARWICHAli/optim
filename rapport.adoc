@@ -32,10 +32,18 @@ IMPORTANT: voir *.log
 image::plots/sin11.png[]
 image::plots/sin11new.png[]
 
+****
+include::logs/sinusit_11_perfect.log[]
+****
+
 === plot points de croisement entre deux sinus
+
 
 image::plots/sin12.png[]
 image::plots/sin12new.png[]
+****
+include::logs/sinusit_12_ok.log[]
+****
 
 
 === voir différence
@@ -47,6 +55,15 @@ rouge est moins bon mais pas trop !
 pas consitant!
 
 == question b
+
+****
+include::logs/sinusit_22_ok.log[]
+****
+
+image::plots/sin22.png[]
+
+
+=== plot all
 
 image::plots/allnew.png[]
 
