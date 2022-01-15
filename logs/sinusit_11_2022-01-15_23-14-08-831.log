@@ -1,6 +1,6 @@
 Run configuration:
-Start time: 2022-01-14_22-26-03
-Seed: 1642195563
+Start time: 2022-01-15_23-14-08
+Seed: 1642284848
 Number of generations: 100
 Population size: 10000
 CPU Threads number: 1
@@ -31,12 +31,12 @@ Server port: 2929
 Reevaluate immigrants: 0
 _____________________________________________________
 Result: 
-Best fitness: 18152.1
+Best fitness: 18347.5
 Best individual: 
-28.6919 3.57589 2.00073 61.7539 4.47217 6.35225 9.61297 7.25274 3.3055 18152.1
+0 0 0 0 0 0 0 0 0 -27.3639 3.56732 -0.233481 69.4531 4.46949 6.20116 3.57019 0.698708 3.32981 18347.5
 
 
-Elapsed time: 6.10776 s
+Elapsed time: 42.9224 s
 _____________________________________________________
 User's messages: 
 

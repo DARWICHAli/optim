@@ -39,6 +39,10 @@ for (int n=0;n<NB_ECH;n++){ // Création des échantillons
   for (int s=0;s<NB_SIN;s++) fSomme+=fSin[s*3+0]*sin(x*fSin[s*3+1]+fSin[s*3+2]);
   fEch[n][1]=fSomme;
 }
+//on init le 8 prob de locus ici
+for (size_t i = 0; i < NB_SIN*3; i++) {
+    probcrois[i] = random(0.0,1.0);
+}
 \end
 
 \After everything else function: // bBest est un pointeur sur le meilleur individu trouvé
@@ -46,6 +50,8 @@ printf("Fonction recherchée : y=");
 for (int s=0;s<NB_SIN;s++) printf("%f*sin(x*%f+%f)+",fSin[s*3+0], fSin[s*3+1], fSin[s*3+2]);
 printf("\n\nFonction trouvée : y=");
 for (int s=0;s<NB_SIN;s++) printf("%f*sin(x*%f+%f)+",bBest->fSin[s*3+0], bBest->fSin[s*3+1], bBest->fSin[s*3+2]);
+printf("\n\n");
+for (int s=0;s<NB_SIN;s++) printf(" %f %f %f ",probcrois[s*3+0], probcrois[s*3+1], probcrois[s*3+2]);
 printf("\n\n");
 \end
 
@@ -71,7 +77,7 @@ GenomeClass {
 \GenomeClass::initialiser : // "initializer" is also accepted
 //on init le 8 prob de locus ici
 for (size_t i = 0; i < NB_SIN*3; i++) {
-    probcrois[i] = random(0.0,1.0);
+    Genome.probcrois[i] = random(0.0,1.0);
 }
 for(int s=0; s<NB_SIN; s++ ){
 	Genome.fSin[s*3+0] = random(0.0,PL_AMP);
@@ -107,9 +113,9 @@ for(int s=0; s<NB_SIN; s++ ){
     if (tossCoin(fProbMutParGene)) Genome.fSin[s*3+1]+=random(-PL_FR, PL_FR)/10.0;
     if (tossCoin(fProbMutParGene)) Genome.fSin[s*3+2]+=random(-PL_PH, PL_PH)/10.0;
 
-    if (tossCoin(fProbMutParGene)) Genome.probcrois[s*3+0]+=random(-1.0, 1.0)/10.0;
-    if (tossCoin(fProbMutParGene)) Genome.probcrois[s*3+1]+=random(-1.0, 1.0)/10.0;
-    if (tossCoin(fProbMutParGene)) Genome.probcrois[s*3+2]+=random(-1.0, 1.0)/10.0;
+    if (tossCoin(fProbMutParGene)) Genome.probcrois[s*3+0] = random(0.0, 1.0)/100.0;
+    if (tossCoin(fProbMutParGene)) Genome.probcrois[s*3+1] = random(0.0, 1.0)/100.0;
+    if (tossCoin(fProbMutParGene)) Genome.probcrois[s*3+2] = random(0.0, 1.0)/100.0;
 
 
 
@@ -133,7 +139,7 @@ for(int s=0; s<NB_SIN; s++ ){
 \end
 
 \Default run parameters :        // Please let the parameters appear in this order
-  Number of generations : 100   	// NB_GEN
+  Number of generations : 1000   	// NB_GEN
   Time limit: 0 			// In seconds, 0 to deactivate
   Population size : 10000			//POP_SIZE
   Offspring size : 100% // 40%

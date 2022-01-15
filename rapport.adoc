@@ -18,16 +18,13 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 * **L’influence (ou non) de points de croisement tombant au milieu d’un sinus ou entre deux sinus**
 
-NOTE: Pas du vrai influence je pense
-
-
 * **La comparaison entre les runs précédents et des runs où les valeurs x0..x7 évoluent en même temps que le génome (par mutation et croisement)**
 
-IMPORTANT: voir *.log
 
 == Resultat
 
 === plot points de croisement tombant au milieu d’un sinus
+
 
 image::plots/sin11.png[]
 image::plots/sin11new.png[]
@@ -35,6 +32,13 @@ image::plots/sin11new.png[]
 ****
 include::logs/sinusit_11_perfect.log[]
 ****
+****
+include::logs/sinusit_11_used.log[]
+****
+
+===== les probs qu'on change les valeurs de sinus sont:
+
+**0.392434 0.907518 0.817309 0.59059 0.92817 0.113932 0.966454 0.164744 0.378326**
 
 === plot points de croisement entre deux sinus
 
@@ -44,7 +48,12 @@ image::plots/sin12new.png[]
 ****
 include::logs/sinusit_12_ok.log[]
 ****
+****
+include::logs/sinusit_12_used.log[]
+****
+===== les probs qu'on change les valeurs de sinus sont:
 
+**0.82323 0.854452 0.0073731 0.850324 0.560475 0.122858 0.894589 0.50023 0.740916**
 
 === voir différence
 
@@ -56,11 +65,20 @@ pas consitant!
 
 == question b
 
+On va essayer avec 1000 generation
+si les probas sont proche de 0, cela montrera que nous aurons un croisement
+auto-adaptatif “intelligent” capable, de lui-même,
+
 ****
-include::logs/sinusit_22_ok.log[]
+include::logs/sinusit_22_2022-01-15_23-40-03-769.log[]
 ****
 
-image::plots/sin22.png[]
+===== les probs qu'on change les valeurs de sinus sont:
+
+**0.00216911 8.55208e-05 0.00386071 0.00554889 0.00357392 0.00967946 0.00657251 0.00577217 0.00376092**
+
+image::plots/sin22_1.png[]
+image::plots/sin22_2.png[]
 
 
 === plot all
@@ -74,4 +92,6 @@ le vert est quand on révalue la prob des locus a chaque gen
 == Conclusion
 
 
-NOTE: répondre au deux questions
+
+les valeurs x0..x7 évoluent en même temps que le génome (par mutation et croisement)
+sont proche de 0 ce qui indique que notre modèle est auto-adaptive .....
