@@ -6,6 +6,7 @@ foo=${1%"$suffix"}
 
 if [[ $1 == *"pdf" ]]; then
     asciidoctor-pdf *.adoc
+    evince rapport.pdf
     exit 0
 fi
 
