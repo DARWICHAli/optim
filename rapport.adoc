@@ -36,7 +36,7 @@ include::logs/sinusit_11_perfect.log[]
 include::logs/sinusit_11_used.log[]
 ****
 
-===== les probs qu'on change les valeurs de sinus sont:
+==== les probs qu'on change les valeurs de sinus sont:
 
 **0.392434 0.907518 0.817309 0.59059 0.92817 0.113932 0.966454 0.164744 0.378326**
 
@@ -51,7 +51,7 @@ include::logs/sinusit_12_ok.log[]
 ****
 include::logs/sinusit_12_used.log[]
 ****
-===== les probs qu'on change les valeurs de sinus sont:
+==== les probs qu'on change les valeurs de sinus sont:
 
 **0.82323 0.854452 0.0073731 0.850324 0.560475 0.122858 0.894589 0.50023 0.740916**
 
@@ -69,28 +69,30 @@ On va essayer avec 1000 generation
 si les probas sont proche de 0, cela montrera que nous aurons un croisement
 auto-adaptatif “intelligent” capable, de lui-même,
 
-****
-include::logs/sinusit_22_2022-01-15_23-40-03-769.log[]
-****
-
-===== les probs qu'on change les valeurs de sinus sont:
-
-**0.00216911 8.55208e-05 0.00386071 0.00554889 0.00357392 0.00967946 0.00657251 0.00577217 0.00376092**
+=== plots
 
 image::plots/sin22_1.png[]
 image::plots/sin22_2.png[]
 
 
+****
+include::logs/sinusit_22_2022-01-15_23-40-03-769.log[]
+****
+
+==== les probs qu'on change les valeurs de sinus sont:
+
+**0.00216911 8.55208e-05 0.00386071 0.00554889 0.00357392 0.00967946 0.00657251 0.00577217 0.00376092**
+
+
 === plot all
 
-image::plots/allnew.png[]
+image::plots/plotall.png[]
 
-le vert est quand on révalue la prob des locus a chaque gen
 
+NOTE: add some comm
 
 
 == Conclusion
-
 
 
 les valeurs x0..x7 évoluent en même temps que le génome (par mutation et croisement)
