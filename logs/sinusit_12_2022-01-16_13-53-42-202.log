@@ -1,12 +1,12 @@
 Run configuration:
-Start time: 2022-01-15_23-40-03
-Seed: 1642286403
-Number of generations: 1000
+Start time: 2022-01-16_13-53-42
+Seed: 1642337622
+Number of generations: 100
 Population size: 10000
 CPU Threads number: 1
 Evaluation goal: 1
 ____________________________________________________
-Special options:
+Special options: 
 Offspring population size: 10000
 Mutation probability: 1
 Crossover probability: 1
@@ -23,19 +23,20 @@ Replacement pressure: 2
 Elitism: 1
 Elite size: 1
 ____________________________________________________
-Remote island model:
+Remote island model: 
 Remote island model: 0
 Ip file: ip.txt
 Migration probability: 0.3
 Server port: 2929
 Reevaluate immigrants: 0
 _____________________________________________________
-Result:
-Best fitness: 205.46
-Best individual:
-0.00216911 8.55208e-05 0.00386071 0.00554889 0.00357392 0.00967946 0.00657251 0.00577217 0 29.1079 7.2597 2.63456 69.4019 4.47015 6.20277 26.4034 3.57014 2.82365 205.46
+Result: 
+Best fitness: 1079.65
+Best individual: 
+0.472113 0.769438 0.961811 0.711971 0.220519 0.231622 0.317335 0.807162 0 69.2559 4.46926 -0.0347972 29.2962 7.25823 2.70685 26.3723 3.5708 2.78951 1079.65
 
 
-Elapsed time: 431.881 s
+Elapsed time: 42.8251 s
 _____________________________________________________
-User's messages:
+User's messages: 
+

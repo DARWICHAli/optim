@@ -11,8 +11,11 @@ toc::[]
 == introduction
 
 *****
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+L’objectif est de voir si l’évolution pourra prescrire des probabilités de croisement
+quasi nulles à l’intérieur d’un même sinus ou pas. Si c’est le cas, cela montrera que nous aurons un croisement
+auto-adaptatif “intelligent” capable, de lui-même, de déterminer l’épistasie (la corrélation) entre certains gènes.
 *****
+
 
 == présentation du problème
 
@@ -27,33 +30,41 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 
 image::plots/sin11.png[]
+
 image::plots/sin11new.png[]
 
 ****
-include::logs/sinusit_11_perfect.log[]
+include::logs/sinusit_11_2022-01-16_13-48-36-968.log[]
 ****
+
 ****
-include::logs/sinusit_11_used.log[]
+include::logs/sinusit_11_2022-01-16_13-52-40-182.log[]
 ****
 
 ==== les probs qu'on change les valeurs de sinus sont:
 
-**0.392434 0.907518 0.817309 0.59059 0.92817 0.113932 0.966454 0.164744 0.378326**
+**0.186136 0.895364 0.547576 0.486443 0.502174 0.461888 0.041086 0.260013**
+
+**0.613273 0.438312 0.0644815 0.298875 0.307368 0.671874 0.0986998 0.251067**
 
 === plot points de croisement entre deux sinus
 
 
 image::plots/sin12.png[]
+
 image::plots/sin12new.png[]
 ****
-include::logs/sinusit_12_ok.log[]
+include::logs/sinusit_12_2022-01-16_13-53-42-202.log[]
 ****
+
 ****
-include::logs/sinusit_12_used.log[]
+include::logs/sinusit_12_2022-01-16_13-51-00-335.log[]
 ****
 ==== les probs qu'on change les valeurs de sinus sont:
 
-**0.82323 0.854452 0.0073731 0.850324 0.560475 0.122858 0.894589 0.50023 0.740916**
+**0.0502886 0.968821 0.74906 0.917252 0.875796 0.0501997 0.957647 0.36432**
+
+**0.472113 0.769438 0.961811 0.711971 0.220519 0.231622 0.317335 0.807162**
 
 === voir différence
 
@@ -62,10 +73,10 @@ image::plots/sin11_&&_12.png[]
 
 rouge est moins bon mais pas trop !
 pas consitant!
+On peut conclure qu'il n'y pas pas d'influence ...
 
 == question b
 
-On va essayer avec 1000 generation
 si les probas sont proche de 0, cela montrera que nous aurons un croisement
 auto-adaptatif “intelligent” capable, de lui-même,
 
@@ -75,13 +86,28 @@ image::plots/sin22_1.png[]
 image::plots/sin22_2.png[]
 
 
+==== 100 gen
 ****
-include::logs/sinusit_22_2022-01-15_23-40-03-769.log[]
+include::logs/sinusit_22_2022-01-16_14-13-46-352.log[]
+****
+==== 1000 gen
+****
+include::logs/sinusit_22_2022-01-16_14-04-15-189.log[]
+****
+==== 10000 gen
+****
+include::logs/sinusit_22_2022-01-16_14-16-13-15.log[]
 ****
 
 ==== les probs qu'on change les valeurs de sinus sont:
 
-**0.00216911 8.55208e-05 0.00386071 0.00554889 0.00357392 0.00967946 0.00657251 0.00577217 0.00376092**
+**0.00216911 8.55208e-05 0.00386071 0.00554889 0.00357392 0.00967946 0.00657251 0.00577217**
+
+**0.001051  0.002468  0.004409  0.005455  0.001293  0.007629  0.006655  0.002260**
+
+**0.00189468 0.000888565 0.000649089 0.00695411 0.00438976 0.000108344 0.00565931 0.00773423**
+
+**0.008135  0.007802  0.009248  0.003416  0.005618  0.002350  0.005701  0.001136**
 
 
 === plot all
@@ -89,11 +115,12 @@ include::logs/sinusit_22_2022-01-15_23-40-03-769.log[]
 image::plots/plotall.png[]
 
 
-NOTE: add some comm
-
+après 100 generation, on trouve que les trois méthodes "points de croisement tombant au milieu d’un sinus, points de croisement entre deux sinus et mutation croisement des point de croisement"
+ménent au même résulats.
 
 == Conclusion
 
-
 les valeurs x0..x7 évoluent en même temps que le génome (par mutation et croisement)
-sont proche de 0 ce qui indique que notre modèle est auto-adaptive .....
+sont proche de 0 ce qui indique que notre modèle est auto-adaptive.
+
+On peut utliser les valeurs de points de croisement pour arrèter l'evolution, au lieu de nombre de generation.

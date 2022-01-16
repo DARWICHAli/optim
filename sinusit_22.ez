@@ -13,7 +13,7 @@ __________________________________________________________*/
 
 float fEch[NB_ECH][2]; // pour x et y
 float fSin[NB_SIN*3];
-float probcrois[NB_SIN*3];
+float probcrois[NB_SIN*3-1];
 
 
 \end
@@ -40,7 +40,7 @@ for (int n=0;n<NB_ECH;n++){ // Création des échantillons
   fEch[n][1]=fSomme;
 }
 //on init le 8 prob de locus ici
-for (size_t i = 0; i < NB_SIN*3; i++) {
+for (size_t i = 0; i < NB_SIN*3-1; i++) {
     probcrois[i] = random(0.0,1.0);
 }
 \end
@@ -51,7 +51,7 @@ for (int s=0;s<NB_SIN;s++) printf("%f*sin(x*%f+%f)+",fSin[s*3+0], fSin[s*3+1], f
 printf("\n\nFonction trouvée : y=");
 for (int s=0;s<NB_SIN;s++) printf("%f*sin(x*%f+%f)+",bBest->fSin[s*3+0], bBest->fSin[s*3+1], bBest->fSin[s*3+2]);
 printf("\n\n");
-for (int s=0;s<NB_SIN;s++) printf(" %f %f %f ",probcrois[s*3+0], probcrois[s*3+1], probcrois[s*3+2]);
+for (int s=0;s<NB_SIN*3-1;s++) printf(" %f ",bBest->probcrois[s]);
 printf("\n\n");
 \end
 
@@ -67,7 +67,7 @@ printf("\n\n");
 \User classes :
 GenomeClass {
   float fSin[NB_SIN*3]; // fSin[x*3+0] = amplitude, fSin[x*3+1] = frequence fSin[x*3+2] = phase
-  float probcrois[NB_SIN*3];
+  float probcrois[NB_SIN*3-1];
 }
 \end
 
@@ -76,7 +76,7 @@ GenomeClass {
 
 \GenomeClass::initialiser : // "initializer" is also accepted
 //on init le 8 prob de locus ici
-for (size_t i = 0; i < NB_SIN*3; i++) {
+for (size_t i = 0; i < NB_SIN*3-1; i++) {
     Genome.probcrois[i] = random(0.0,1.0);
 }
 for(int s=0; s<NB_SIN; s++ ){
@@ -93,7 +93,8 @@ for(int s=0; s<NB_SIN; s++ ){
     for (int i = 0; i < NB_SIN; i++) {
         child.probcrois[i*3+0]=parent2.probcrois[i*3+0];
         child.probcrois[i*3+1]=parent2.probcrois[i*3+1];
-        child.probcrois[i*3+2]=parent2.probcrois[i*3+2];
+        if(i!=2)
+            child.probcrois[i*3+2]=parent2.probcrois[i*3+2];
     }
 
     int nLocus= 0;
@@ -101,7 +102,8 @@ for(int s=0; s<NB_SIN; s++ ){
     // croisement tombant au milieu d’un sinus
     if (tossCoin(probcrois[i*3+0])) child.fSin[i*3+0]=parent2.fSin[i*3+0];
     if (tossCoin(probcrois[i*3+1])) child.fSin[i*3+1]=parent2.fSin[i*3+1];
-    if (tossCoin(probcrois[i*3+2])) child.fSin[i*3+2]=parent2.fSin[i*3+2];
+    if(i!=2)
+        if (tossCoin(probcrois[i*3+2])) child.fSin[i*3+2]=parent2.fSin[i*3+2];
     }
 
 \end
@@ -115,10 +117,8 @@ for(int s=0; s<NB_SIN; s++ ){
 
     if (tossCoin(fProbMutParGene)) Genome.probcrois[s*3+0] = random(0.0, 1.0)/100.0;
     if (tossCoin(fProbMutParGene)) Genome.probcrois[s*3+1] = random(0.0, 1.0)/100.0;
-    if (tossCoin(fProbMutParGene)) Genome.probcrois[s*3+2] = random(0.0, 1.0)/100.0;
-
-
-
+    if(s!=2)
+        if (tossCoin(fProbMutParGene)) Genome.probcrois[s*3+2] = random(0.0, 1.0)/100.0;
   }
 
 
