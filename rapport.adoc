@@ -11,13 +11,14 @@ toc::[]
 == introduction
 
 *****
-L’objectif est de voir si l’évolution pourra prescrire des probabilités de croisement
-quasi nulles à l’intérieur d’un même sinus ou pas. Si c’est le cas, cela montrera que nous aurons un croisement
+L’objectif est de voir si l’évolution pourra prescrire des probabilités de croisement quasi nulles à l’intérieur d’un même sinus ou pas. Si c’est le cas, cela montrera que nous aurons un croisement
 auto-adaptatif “intelligent” capable, de lui-même, de déterminer l’épistasie (la corrélation) entre certains gènes.
 *****
 
 
 == présentation du problème
+
+On va répondre aux questions suivantes.
 
 * **L’influence (ou non) de points de croisement tombant au milieu d’un sinus ou entre deux sinus**
 
@@ -25,6 +26,8 @@ auto-adaptatif “intelligent” capable, de lui-même, de déterminer l’épis
 
 
 == Resultat
+
+
 
 === plot points de croisement tombant au milieu d’un sinus
 
@@ -71,14 +74,12 @@ include::logs/sinusit_12_2022-01-16_13-51-00-335.log[]
 image::plots/sin11et12.png[]
 image::plots/sin11_&&_12.png[]
 
-rouge est moins bon mais pas trop !
-pas consitant!
-On peut conclure qu'il n'y pas pas d'influence ...
+NOTE: le graphe générer par la méthodes "points de croisement entre deux sinus" converge moins rapide que l'autre méthode. Donc on il faut qu'on augmente la nombre de génération pour garentir les résulats
 
-== question b
 
-si les probas sont proche de 0, cela montrera que nous aurons un croisement
-auto-adaptatif “intelligent” capable, de lui-même,
+== Comparaison entre les runs précédents et des runs où les valeurs x0..x7 évoluent par mutation et croisement
+
+si les probabilités sont proche de 0, cela montrera que nous aurons un croisement auto-adaptatif “intelligent” capable, de lui-même,
 
 === plots
 
@@ -120,7 +121,13 @@ ménent au même résulats.
 
 == Conclusion
 
+*****
+On peut conclure que si on fait croisement tombant au milieu ou entre sinus ça va pas trop affecter les résultats avec une grande nombre de génération.
+*****
+*****
 les valeurs x0..x7 évoluent en même temps que le génome (par mutation et croisement)
 sont proche de 0 ce qui indique que notre modèle est auto-adaptive.
-
+*****
+*****
 On peut utliser les valeurs de points de croisement pour arrèter l'evolution, au lieu de nombre de generation.
+*****
